@@ -1,0 +1,33 @@
+services:
+  mysql:
+    image: tabib.azurecr.io/tabibsql:latest
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: dbtabib
+      MYSQL_ALLOW_EMPTY_PASSWORD: true
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./dbtabib.sql:/docker-entrypoint-initdb.d/dbtabib.sql
+      - /mysql_data:/var/lib/mysql
+
+  app:
+    build: .
+    container_name: tabib-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASS: root
+
+networks:
+  my-network:
+    driver: bridge
+
+volumes:
+  mysql_data:

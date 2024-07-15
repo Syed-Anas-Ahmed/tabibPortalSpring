@@ -1,0 +1,58 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration >
+    <session-factory>
+        <property name="hibernate.default_lazy">false</property>
+
+        <property name = "hibernate.connection.provider_class">
+            org.hibernate.connection.C3P0ConnectionProvider
+        </property>
+
+        <property name = "hibernate.dialect">
+            org.hibernate.dialect.MySQLDialect
+        </property>
+
+        <property name = "hibernate.connection.driver_class">
+            com.mysql.cj.jdbc.Driver
+        </property>
+        <!-- Assume test is the database name -->
+
+        <property name = "hibernate.connection.url">
+            jdbc:mysql://${MYSQL_HOST}:3306/dbtabib
+        </property>
+
+        <property name = "hibernate.connection.username">
+           ${MYSQL_USER}
+        </property>
+        <property name = "hibernate.connection.password">
+            ${MYSQL_PASS}
+        </property>
+        <property name="hibernate.connection.default_schema">dbtabib</property>
+        <!-- Shows SQL instructions in shell when you run your program and do any CRUD operation into the DB -->
+        <property name="show_sql">true</property>
+        <!-- Updates DB schema on startup -->
+        <property name="hbm2ddl.auto">update</property>
+        <property name="hibernate.c3p0.min_size">5</property>
+        <property name="hibernate.c3p0.max_size">100</property>
+        <property name="hibernate.c3p0.acquire_increment">5</property>
+        <property name="hibernate.c3p0.timeout">1800</property>
+
+        <mapping class="com.fynuls.entity.User" />
+        <mapping class="com.fynuls.entity.Patient" />
+        <mapping class="com.fynuls.entity.Doctor" />
+        <mapping class="com.fynuls.entity.AppointmentModel" />
+        <mapping class="com.fynuls.entity.Clinic" />
+        <mapping class="com.fynuls.entity.DoctorClinic" />
+        <mapping class="com.fynuls.entity.Qualification" />
+        <mapping class="com.fynuls.entity.DoctorQualification" />
+        <mapping class="com.fynuls.entity.Patient" />
+        <mapping class="com.fynuls.entity.LoginStatus" />
+        <mapping class="com.fynuls.utils.IDMANAGER"/>
+        <mapping class="com.fynuls.entity.Feedback" />
+        <mapping class="com.fynuls.entity.Treatment" />
+        <mapping class="com.fynuls.entity.TreatmentBank" />
+        <mapping class="com.fynuls.entity.Specialization" />
+        <mapping class="com.fynuls.entity.DoctorSpecialization" />
+    </session-factory>
+</hibernate-configuration>

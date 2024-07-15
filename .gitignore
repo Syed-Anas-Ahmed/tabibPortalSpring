@@ -1,0 +1,22 @@
+# IntelliJ IDEA
+.idea/
+
+# Compiled class file
+*.class
+
+# Log files
+*.log
+
+# BlueJ files
+*.ctxt
+
+# JRebel
+rebel.xml
+
+# JBoss
+*.tmp
+*.log
+*.tmp
+
+# Maven target directory
+target/
